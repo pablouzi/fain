@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAIN 2026 - Festival de Animación Digital INACAP Sede Concepción-Talcahuano</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Titan+One&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fainBlue: '#0052FF',
+                        fainDarkBlue: '#003BB8',
+                        fainMagenta: '#FF2A85',
+                        fainOrange: '#FF6B00',
+                        fainLime: '#AEEA00',
+                        fainYellow: '#FFD600',
+                        fainCoral: '#FF3D3D',
+                        fainDark: '#0A0F24'
+                    },
+                    fontFamily: {
+                        bubble: ['Fredoka', 'Titan One', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif'],
+                        titan: ['Titan One', 'cursive']
+                    },
+                    boxShadow: {
+                        'pop': '4px 4px 0px #000000',
+                        'pop-lg': '6px 6px 0px #000000',
+                        'pop-xl': '8px 8px 0px #000000',
+                        'pop-white': '5px 5px 0px #FFFFFF',
+                        'pop-magenta': '5px 5px 0px #FF2A85',
+                        'pop-lime': '5px 5px 0px #AEEA00'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0052FF;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1E293B;
+            overflow-x: hidden;
+        }
+
+        /* Bubble Text Effect */
+        .fain-bubble-title {
+            font-family: 'Fredoka', cursive;
+            text-shadow: 4px 4px 0px #000000, -2px -2px 0px #000000, 2px -2px 0px #000000, -2px 2px 0px #000000, 0px 4px 0px #000000;
+        }
+
+        .fain-logo-text {
+            font-family: 'Titan One', cursive;
+            color: #FFFFFF;
+            text-shadow: 4px 4px 0px #000000, -2px -2px 0px #000000, 2px -2px 0px #000000, -2px 2px 0px #000000;
+        }
+
+        /* Animated Floating Elements */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(3deg); }
+        }
+
+        @keyframes floatFast {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(-4deg); }
+        }
+
+        @keyframes cloudMove {
+            0% { transform: translateX(-10%); }
+            50% { transform: translateX(10%); }
+            100% { transform: translateX(-10%); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255, 214, 0, 0.6)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 20px rgba(255, 214, 0, 0.9)); }
+        }
+
+        .animate-float-slow { animation: floatSlow 5s ease-in-out infinite; }
+        .animate-float-fast { animation: floatFast 3.5s ease-in-out infinite; }
+        .animate-cloud { animation: cloudMove 25s ease-in-out infinite; }
+        .animate-pulse-glow { animation: pulseGlow 2.5s ease-in-out infinite; }
+
+        /* Custom Card Border Style */
+        .pop-card {
+            background-color: #FFFFFF;
+            border: 3.5px solid #000000;
+            border-radius: 20px;
+            box-shadow: 6px 6px 0px #000000;
+            transition: all 0.2s ease;
+        }
+
+        .pop-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 10px 10px 0px #000000;
+        }
+
+        .pop-btn {
+            border: 3px solid #000000;
+            border-radius: 14px;
+            font-weight: 700;
+            box-shadow: 4px 4px 0px #000000;
+            transition: all 0.15s ease;
+        }
+
+        .pop-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #000000;
+        }
+
+        .pop-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000000;
+        }
+
+        /* Doodle background graphics */
+        .bg-doodles {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.15) 2px, transparent 2px);
+            background-size: 24px 24px;
+        }
+
+        /* Accordion custom style */
+        details[open] summary i {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-fainBlue min-h-screen text-slate-800 bg-doodles relative selection:bg-fainYellow selection:text-black">
+
+    <!-- Floating Graphic Elements (Matching poster doodles) -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-90">
+        <!-- Cloud Top Right -->
+        <div class="absolute top-12 right-[-50px] md:right-10 animate-cloud text-white opacity-80">
+            <svg width="180" height="100" viewBox="0 0 180 100" fill="currentColor">
+                <path d="M30,80 Q10,80 10,60 Q10,40 30,40 Q40,10 70,20 Q90,0 120,20 Q150,10 160,40 Q180,50 170,70 Q170,90 140,85 Z" />
+            </svg>
+        </div>
+        <!-- Cloud Middle Left -->
+        <div class="absolute top-1/3 left-[-30px] md:left-5 animate-float-slow text-white opacity-70">
+            <svg width="140" height="80" viewBox="0 0 140 80" fill="currentColor">
+                <path d="M20,60 Q5,60 5,45 Q5,30 20,30 Q30,10 55,15 Q70,0 95,15 Q115,5 125,30 Q140,40 130,60 Z" />
+            </svg>
+        </div>
+        <!-- Yellow Wavy Spring Loop (from poster) -->
+        <div class="absolute bottom-20 left-6 hidden lg:block animate-float-fast text-fainYellow">
+            <svg width="160" height="160" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round">
+                <path d="M 10 50 C 30 10, 70 10, 50 50 C 30 90, 70 90, 90 50" />
+            </svg>
+        </div>
+        <!-- Rocket Cat Doodle floating top left -->
+        <div class="absolute top-28 left-12 hidden md:block animate-float-slow opacity-80">
+            <div class="bg-fainMagenta text-white px-3 py-1.5 rounded-full font-bubble text-xs border-2 border-black shadow-pop font-bold transform -rotate-12">
+                🚀 Cortos +1 Min
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 px-4 py-3 bg-fainBlue/90 backdrop-blur-md border-b-4 border-black">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <img src="fain2026.svg" alt="Logo FAIN 2026" class="h-12 md:h-14 w-auto rounded-2xl border-3 border-black bg-white p-1 shadow-pop transform group-hover:rotate-3 transition-transform object-contain">
+                <div class="hidden sm:flex flex-col text-white font-body leading-tight">
+                 
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-6 font-bold text-white text-sm tracking-wide">
+                <a href="#inicio" class="hover:text-fainYellow transition-colors">Inicio</a>
+                <a href="#bases" class="hover:text-fainYellow transition-colors">Bases</a>
+                <a href="#cronograma" class="hover:text-fainYellow transition-colors">Cronograma</a>
+                <a href="#premios" class="hover:text-fainYellow transition-colors">Premios</a>
+                <a href="#postular" class="pop-btn bg-fainYellow text-black px-5 py-2.5 hover:bg-white text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Postular
+                </a>
+            </nav>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button id="mobileMenuBtn" class="md:hidden pop-btn bg-fainYellow text-black p-2.5">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden md:hidden pt-4 pb-2 px-2 flex flex-col gap-3 font-bold text-white text-center border-t-2 border-black/20 mt-3">
+            <a href="#inicio" class="py-2 hover:bg-fainDarkBlue rounded-lg">Inicio</a>
+            <a href="#bases" class="py-2 hover:bg-fainDarkBlue rounded-lg">Bases y Requisitos</a>
+            <a href="#cronograma" class="py-2 hover:bg-fainDarkBlue rounded-lg">Cronograma</a>
+            <a href="#premios" class="py-2 hover:bg-fainDarkBlue rounded-lg">Premios</a>
+            <a href="#postular" class="pop-btn bg-fainYellow text-black py-3 text-center block text-base font-extrabold">
+                🔥 ¡Postular Cortometraje Ahora!
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative z-10 pt-8 pb-16 px-4 md:py-20 overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-12 gap-8 items-center">
+                
+                <!-- Hero Left Column: Text & Badges -->
+                <div class="md:col-span-7 text-center md:text-left text-white">
+                    
+                    <!-- Badges -->
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-2.5 mb-6">
+                        <span class="pop-btn bg-fainLime text-black px-3.5 py-1 text-xs font-black uppercase tracking-wider">
+                            <i class="fa-solid fa-star text-black mr-1"></i> Noviembre 2026
+                        </span>
+                        <span class="pop-btn bg-fainMagenta text-white px-3.5 py-1 text-xs font-black uppercase tracking-wider">
+                            <i class="fa-solid fa-bullhorn mr-1"></i> Convocatoria Abierta
+                        </span>
+                        <span class="pop-btn bg-white text-black px-3.5 py-1 text-xs font-black uppercase tracking-wider hidden sm:inline-block">
+                            📍 Región del Biobío
+                        </span>
+                    </div>
+
+                    <!-- Big Title -->
+                    <h1 class="fain-bubble-title text-6xl sm:text-7xl lg:text-8xl font-black text-white leading-none tracking-normal mb-4">
+                        FAIN <span class="text-fainYellow">2026</span>
+                    </h1>
+
+                    <p class="font-bubble text-2xl sm:text-3xl text-fainYellow font-bold mb-4 drop-shadow-md">
+                        Festival de Animación Digital INACAP
+                    </p>
+
+                    <p class="text-lg sm:text-xl font-medium text-slate-100 max-w-xl mx-auto md:mx-0 mb-8 leading-relaxed">
+                        El punto de encuentro regional para estudiantes y creadores de animación digital. Muestra tu cortometraje, conecta con la industria y compite por grandes reconocimientos.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                        <a href="#postular" class="pop-btn bg-fainYellow text-black px-8 py-4 text-xl font-black w-full sm:w-auto text-center hover:bg-white animate-pulse-glow flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-rocket text-2xl"></i>
+                            IR AL FORMULARIO DE POSTULACIÓN
+                        </a>
+                        <a href="#bases" class="pop-btn bg-white text-black px-6 py-4 text-base font-bold w-full sm:w-auto text-center hover:bg-slate-100 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-file-pdf text-fainCoral"></i>
+                            Ver Bases
+                        </a>
+                    </div>
+
+                    <!-- Key highlights strip -->
+                    <div class="mt-10 pt-6 border-t-2 border-white/20 grid grid-cols-3 gap-2 text-center md:text-left">
+                        <div>
+                            <span class="block font-titan text-2xl lg:text-3xl text-fainYellow">≥ 1 MIN</span>
+                            <span class="text-xs sm:text-sm font-semibold opacity-90">Duración Mínima</span>
+                        </div>
+                        <div>
+                            <span class="block font-titan text-2xl lg:text-3xl text-fainLime">2D / 3D</span>
+                            <span class="text-xs sm:text-sm font-semibold opacity-90">Técnica Libre</span>
+                        </div>
+                        <div>
+                            <span class="block font-titan text-2xl lg:text-3xl text-fainMagenta">+ PUNTAJE</span>
+                            <span class="text-xs sm:text-sm font-semibold opacity-90">Identidad Local</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Hero Right Column: Graphic Poster Banner Card -->
+                <div class="md:col-span-5 relative flex justify-center">
+                    <div class="pop-card bg-fainYellow p-4 md:p-6 w-full max-w-md transform rotate-2 hover:rotate-0 transition-transform relative">
+                        
+                        <!-- Floating Badge Decorative -->
+                        <div class="absolute -top-5 -right-5 z-20">
+                            <div class="pop-btn bg-fainCoral text-white p-3 rounded-full font-titan text-xs text-center leading-tight animate-float-fast">
+                                SEDE<br>CONCEPCIÓN<br>TALCAHUANO
+                            </div>
+                        </div>
+
+                        <!-- Main Graphic Graphic Box -->
+                        <div class="bg-fainBlue rounded-xl p-6 border-3 border-black text-center text-white relative overflow-hidden">
+                            <!-- Canvas Illustration Graphic Representation -->
+                            <div class="py-6 flex flex-col items-center justify-center gap-3">
+                                <div class="font-titan text-7xl text-white tracking-widest drop-shadow-[4px_4px_0_#000]">
+                                    fain
+                                </div>
+                                <div class="bg-white text-black font-extrabold text-xs px-3 py-1 rounded-full border-2 border-black uppercase tracking-wider">
+                                    Festival de Animación Inacap
+                                </div>
+                                
+                                <div class="flex items-center gap-4 mt-4">
+                                    <span class="text-4xl animate-bounce">🎨</span>
+                                    <span class="text-4xl animate-bounce delay-100">🚀</span>
+                                    <span class="text-4xl animate-bounce delay-200">🛹</span>
+                                    <span class="text-4xl animate-bounce delay-300">🎬</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-fainDark rounded-lg p-3 border-2 border-black mt-2 text-left text-xs font-mono">
+                                <div class="text-fainLime font-bold mb-1">
+                                    <i class="fa-solid fa-graduation-cap"></i> Convocatoria Abierta:
+                                </div>
+                                <p class="text-slate-300">Estudiantes y egresados de escuelas de animación de la Región del Biobío.</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 text-center">
+                            <p class="font-titan text-black text-lg">ÁREA DISEÑO E INDUSTRIA DIGITAL</p>
+                            <p class="text-xs font-bold text-slate-800">INACAP Sede Concepción-Talcahuano</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: BASES Y REQUISITOS -->
+    <section id="bases" class="relative z-10 py-16 px-4 bg-white border-y-4 border-black">
+        <div class="max-w-5xl mx-auto">
+            
+            <div class="text-center mb-12">
+                <span class="pop-btn bg-fainMagenta text-white px-4 py-1.5 text-xs font-black uppercase tracking-widest inline-block mb-3">
+                    Reglamento Oficial
+                </span>
+                <h2 class="font-titan text-4xl sm:text-5xl text-black">BASES DEL FESTIVAL</h2>
+                <p class="text-slate-600 font-medium text-lg mt-2 max-w-2xl mx-auto">
+                    Revisa las condiciones generales para participar con tu cortometraje en FAIN 2026.
+                </p>
+            </div>
+
+            <!-- Grid of Interactive Feature Cards -->
+            <div class="grid md:grid-cols-2 gap-6 mb-10">
+                
+                <!-- Card 1: Duración y Técnica -->
+                <div class="pop-card p-6 bg-slate-50 border-3 border-black">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-fainYellow border-2 border-black flex items-center justify-center font-black text-2xl text-black shadow-pop">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl text-black">Duración y Técnica</h3>
+                            <p class="text-xs font-bold text-fainDarkBlue uppercase">Criterio de obra</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-2.5 text-slate-700 text-sm font-medium">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-fainDarkBlue mt-1"></i>
+                            <span>Cortometrajes de mínimo 1 minuto de duración.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-fainDarkBlue mt-1"></i>
+                            <span>Técnica libre (2D, 3D, Stop Motion, Cut-out, etc.).</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 2: Temática e Identidad Local -->
+                <div class="pop-card p-6 bg-fainYellow/20 border-3 border-black relative overflow-hidden">
+                    <div class="absolute -right-6 -top-6 bg-fainOrange text-white font-black text-xs px-8 py-2 transform rotate-45 border-2 border-black">
+                        BONUS
+                    </div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-fainOrange border-2 border-black flex items-center justify-center font-black text-2xl text-white shadow-pop">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl text-black">Temática e Identidad Local</h3>
+                            <span class="pop-btn bg-fainOrange text-white text-[10px] px-2 py-0.5">Mayor puntaje</span>
+                        </div>
+                    </div>
+                    <p class="text-sm font-medium text-slate-800 leading-relaxed mb-3">
+                        La temática es libre. Sin embargo, se otorgará mayor puntaje a proyectos que destaquen la identidad local de la región de origen del participante.
+                    </p>
+                    <div class="bg-white p-3 rounded-xl border-2 border-black text-xs font-semibold text-slate-700 space-y-1">
+                        <div>• Cultura, territorio y patrimonio.</div>
+                        <div>• Mitos urbanos y paisajes locales.</div>
+                        <div>• Identidad regional de la comunidad de origen.</div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Uso de IA y Respaldo -->
+                <div class="pop-card p-6 bg-red-50 border-3 border-black">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-fainCoral border-2 border-black flex items-center justify-center font-black text-2xl text-white shadow-pop">
+                            <i class="fa-solid fa-ban"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl text-black">Uso de IA y Respaldo</h3>
+                            <p class="text-xs font-bold text-fainCoral uppercase">Obligatorio</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-2.5 text-slate-700 text-sm font-medium">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-fainCoral mt-1"></i>
+                            <span>No está permitido el uso de IA generativa para la creación total de la obra.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-fainCoral mt-1"></i>
+                            <span>Se debe incluir una carpeta Making Of con bocetos, storyboards y capturas del proceso.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 4: Estudiantes y Originalidad -->
+                <div class="pop-card p-6 bg-slate-50 border-3 border-black">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-fainLime border-2 border-black flex items-center justify-center font-black text-2xl text-black shadow-pop">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl text-black">Estudiantes y Originalidad</h3>
+                            <p class="text-xs font-bold text-slate-600 uppercase">Participación</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-2.5 text-sm font-medium text-slate-700">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-fainDarkBlue mt-1"></i>
+                            <span>Abierto a estudiantes o recién egresados (2025).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-fainDarkBlue mt-1"></i>
+                            <span>Requisito obligatorio: adjuntar certificado de alumno regular o certificado de egreso.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-fainDarkBlue mt-1"></i>
+                            <span>Se deben especificar los derechos de autor de recursos utilizados, en caso que corresponda.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Accordion for Detailed Terms -->
+            <div class="pop-card p-4 bg-fainDark text-white border-3 border-black">
+                <details class="group cursor-pointer">
+                    <summary class="font-bold text-lg flex justify-between items-center py-2 px-2 select-none">
+                        <span><i class="fa-solid fa-circle-info text-fainYellow mr-2"></i> Ver checklist de archivos a subir a tu carpeta en la nube</span>
+                        <i class="fa-solid fa-chevron-down text-fainYellow transition-transform duration-200"></i>
+                    </summary>
+                    <div class="pt-4 border-t border-slate-700 text-sm space-y-3 px-2 text-slate-300 font-normal">
+                        <p>Tu enlace en la nube (Google Drive, OneDrive o Dropbox) debe contener:</p>
+                        <ol class="list-decimal pl-5 space-y-1 text-white font-medium">
+                            <li><strong>Archivo de video:</strong> Cortometraje en MP4/MOV 1080p H.264.</li>
+                            <li><strong>Ficha Técnica en PDF:</strong> Título, autor(es), institución, técnica, duración y sinopsis (máximo 5 líneas).</li>
+                            <li><strong>Carpeta "Making_Of":</strong> 3 a 5 imágenes de bocetos, storyboard o captura de pantalla del software de animación.</li>
+                        </ol>
+                        <p class="text-xs text-fainYellow italic">* Asegúrate de otorgar permisos de acceso público o acceso para lectura a la carpeta compartida.</p>
+                    </div>
+                </details>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION: CRONOGRAMA Y PREMIOS -->
+    <section id="cronograma" class="relative z-10 py-16 px-4 text-white">
+        <div class="max-w-6xl mx-auto">
+            
+            <!-- Timeline Title -->
+            <div class="text-center mb-16">
+                <span class="pop-btn bg-fainYellow text-black px-4 py-1.5 text-xs font-black uppercase tracking-widest inline-block mb-3">
+                    Fechas Importantes
+                </span>
+                <h2 class="font-titan text-4xl sm:text-5xl text-white">CRONOGRAMA DE GESTIÓN</h2>
+            </div>
+
+            <!-- Timeline Steps Grid -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20 relative">
+                
+                <!-- Step 1 -->
+                <div class="pop-card p-6 bg-fainDark border-3 border-black text-white relative">
+                    <div class="pop-btn bg-fainMagenta text-white font-titan text-lg px-3 py-1 inline-block mb-3">
+                        SEPTIEMBRE
+                    </div>
+                    <h3 class="font-bold text-xl text-fainYellow mb-2">Lanzamiento de Convocatoria</h3>
+                    <p class="text-sm text-slate-300 font-medium">
+                        Lunes 14 de septiembre de 2026.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="pop-card p-6 bg-fainDark border-3 border-black text-white relative">
+                    <div class="pop-btn bg-fainLime text-black font-titan text-lg px-3 py-1 inline-block mb-3">
+                        OCTUBRE
+                    </div>
+                    <h3 class="font-bold text-xl text-fainYellow mb-2">Cierre de Recepción</h3>
+                    <p class="text-sm text-slate-300 font-medium">
+                        Viernes 30 de octubre de 2026 (23:59 hrs).
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="pop-card p-6 bg-fainDark border-3 border-black text-white relative">
+                    <div class="pop-btn bg-fainOrange text-white font-titan text-lg px-3 py-1 inline-block mb-3">
+                        NOVIEMBRE
+                    </div>
+                    <h3 class="font-bold text-xl text-fainYellow mb-2">Publicación de Selección Oficial</h3>
+                    <p class="text-sm text-slate-300 font-medium">
+                        Lunes 9 de noviembre de 2026.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="pop-card p-6 bg-fainYellow border-3 border-black text-black relative">
+                    <div class="pop-btn bg-black text-fainYellow font-titan text-lg px-3 py-1 inline-block mb-3">
+                        NOVIEMBRE
+                    </div>
+                    <h3 class="font-bold text-xl text-black mb-2">FAIN 2026</h3>
+                    <p class="text-sm text-slate-900 font-bold">
+                        Exhibición y premiación: 26 de noviembre de 2026.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- PREMIOS SECTION -->
+            <div id="premios" class="pt-8">
+                <div class="text-center mb-12">
+                    <span class="pop-btn bg-fainCoral text-white px-4 py-1.5 text-xs font-black uppercase tracking-widest inline-block mb-3">
+                        Reconocimientos
+                    </span>
+                    <h2 class="font-titan text-4xl sm:text-5xl text-white">CATEGORÍAS DE PREMIACIÓN</h2>
+                    <p class="text-slate-200 font-medium text-lg mt-2">
+                        Galardones otorgados por nuestro jurado de especialistas y el público asistente.
+                    </p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Award 1 -->
+                    <div class="pop-card p-6 bg-white border-3 border-black text-center text-black flex flex-col items-center">
+                        <div class="w-16 h-16 rounded-full bg-fainYellow border-3 border-black flex items-center justify-center text-3xl mb-4 shadow-pop">
+                            🏆
+                        </div>
+                        <h3 class="font-titan text-xl text-black mb-2">Mejor Cortometraje FAIN</h3>
+                        <p class="text-xs text-slate-600 font-semibold">
+                            Máximo galardón otorgado al proyecto con mayor excelencia narrativa, técnica y conceptual.
+                        </p>
+                    </div>
+
+                    <!-- Award 2 -->
+                    <div class="pop-card p-6 bg-white border-3 border-black text-center text-black flex flex-col items-center">
+                        <div class="w-16 h-16 rounded-full bg-fainMagenta border-3 border-black flex items-center justify-center text-3xl text-white mb-4 shadow-pop">
+                            🎨
+                        </div>
+                        <h3 class="font-titan text-xl text-black mb-2">Mejor Dirección de Arte</h3>
+                        <p class="text-xs text-slate-600 font-semibold">
+                            Reconocimiento al diseño de personajes, escenarios, paleta de color y estilo visual sobresaliente.
+                        </p>
+                    </div>
+
+                    <!-- Award 3 -->
+                    <div class="pop-card p-6 bg-white border-3 border-black text-center text-black flex flex-col items-center">
+                        <div class="w-16 h-16 rounded-full bg-fainLime border-3 border-black flex items-center justify-center text-3xl text-black mb-4 shadow-pop">
+                            ⚡
+                        </div>
+                        <h3 class="font-titan text-xl text-black mb-2">Técnica de Animación</h3>
+                        <p class="text-xs text-slate-600 font-semibold">
+                            Mención especial al dominio fluido del movimiento, timing, acting y principios de animación.
+                        </p>
+                    </div>
+
+                    <!-- Award 4 -->
+                    <div class="pop-card p-6 bg-white border-3 border-black text-center text-center text-black flex flex-col items-center">
+                        <div class="w-16 h-16 rounded-full bg-fainOrange border-3 border-black flex items-center justify-center text-3xl text-white mb-4 shadow-pop">
+                            👏
+                        </div>
+                        <h3 class="font-titan text-xl text-black mb-2">Premio del Público</h3>
+                        <p class="text-xs text-slate-600 font-semibold">
+                            Votación presencial y en vivo realizada por los asistentes a la jornada del festival.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION: FORMULARIO DE POSTULACIÓN -->
+    <section id="postular" class="relative z-10 py-16 px-4 bg-fainDark border-t-4 border-black text-white">
+        <div class="max-w-4xl mx-auto">
+            
+            <div class="text-center mb-10">
+                <span class="pop-btn bg-fainLime text-black px-4 py-1.5 text-xs font-black uppercase tracking-widest inline-block mb-3">
+                    Inscripción Online
+                </span>
+                <h2 class="font-titan text-4xl sm:text-5xl text-white">FORMULARIO DE POSTULACIÓN</h2>
+                <p class="text-slate-300 font-medium text-base mt-2">
+                    Completa la información requerida para inscribir tu cortometraje animado en FAIN 2026.
+                </p>
+                <div class="mt-3 inline-flex items-center gap-2 bg-fainBlue/40 border border-fainBlue px-3 py-1 rounded-full text-xs text-fainYellow">
+                    <i class="fa-solid fa-envelope"></i> Las postulaciones serán canalizadas a: <strong>fainccp@inacap.cl</strong>
+                </div>
+            </div>
+
+            <!-- Form Container Card -->
+            <div class="pop-card p-6 md:p-10 bg-white text-slate-900 border-4 border-black">
+                
+                <form id="fainPostulationForm" class="space-y-6" action="https://formsubmit.co/fainccp@inacap.cl" method="POST" novalidate>
+                    <input type="hidden" name="_subject" value="Nueva postulación FAIN 2026">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    
+                    <!-- Section Header 1 -->
+                    <div class="border-b-2 border-slate-200 pb-2">
+                        <h3 class="font-titan text-xl text-fainDarkBlue flex items-center gap-2">
+                            <i class="fa-solid fa-user"></i> 1. Datos del Creador / Director
+                        </h3>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <!-- Nombre Director -->
+                        <div>
+                            <label for="directorName" class="block font-bold text-xs uppercase tracking-wider text-slate-700 mb-1">
+                                Nombre Completo del Director / Responsable *
+                            </label>
+                            <input type="text" id="directorName" name="directorName" required placeholder="Ej: Valentina Morales Soto" 
+                                class="w-full px-4 py-3 rounded-xl border-2 border-black focus:outline-none focus:ring-2 focus:ring-fainBlue font-medium text-sm">
+                        </div>
+
+                        <!-- Correo electrónico -->
+                        <div>
+                            <label for="directorEmail" class="block font-bold text-xs uppercase tracking-wider text-slate-700 mb-1">
+                                Correo Electrónico de Contacto *
+                            </label>
+                            <input type="email" id="directorEmail" name="directorEmail" required placeholder="ejemplo@inacap.cl" 
+                                class="w-full px-4 py-3 rounded-xl border-2 border-black focus:outline-none focus:ring-2 focus:ring-fainBlue font-medium text-sm">
+                        </div>
+
+                        <!-- Teléfono / WhatsApp -->
+                        <div>
+                            <label for="directorPhone" class="block font-bold text-xs uppercase tracking-wider text-slate-700 mb-1">
+                                Teléfono / WhatsApp *
+                            </label>
+                            <input type="tel" id="directorPhone" name="directorPhone" required placeholder="+56 9 1234 5678" 
+                                class="w-full px-4 py-3 rounded-xl border-2 border-black focus:outline-none focus:ring-2 focus:ring-fainBlue font-medium text-sm">
+                        </div>
+
+                        <!-- Institución Educativa -->
+                        <div>
+                            <label for="institution" class="block font-bold text-xs uppercase tracking-wider text-slate-700 mb-1">
+                                Institución de Educación Superior *
+                            </label>
+                            <select id="institution" name="institution" required class="w-full px-4 py-3 rounded-xl border-2 border-black focus:outline-none focus:ring-2 focus:ring-fainBlue font-medium text-sm bg-white">
+                                <option value="" disabled selected>Selecciona tu institución</option>
+                                <option value="INACAP Sede Concepción-Talcahuano">INACAP Sede Concepción-Talcahuano</option>
+                                <option value="INACAP Sede San Pedro de la Paz">INACAP Sede San Pedro de la Paz</option>
+                                <option value="Universidad de Concepción (UdeC)">Universidad de Concepción (UdeC)</option>
+                                <option value="Universidad del Bío-Bío (UBB)">Universidad del Bío-Bío (UBB)</option>
+                                <option value="Duoc UC Sede San Andrés">Duoc UC Sede San Andrés</option>
+                                <option value="Santo Tomás Concepción">Santo Tomás Concepción</option>
+                                <option value="Instituto Profesional AIEP">Instituto Profesional AIEP</option>
+                                <option value="Universidad San Sebastián">Universidad San Sebastián</option>
+                                <option value="Otra Institución Regional">Otra Institución de la Región del Biobío</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Section Header 2 -->
+                    <div class="border-b-2 border-slate-200 pb-2 pt-4">
+                        <h3 class="font-titan text-xl text-fainDarkBlue flex items-center gap-2">
+                            <i class="fa-solid fa-film"></i> 2. Datos del Cortometraje Animado
+                        </h3>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <!-- Título del Cortometraje -->
+                        <div class="md:col-span-2">
+                            <label for="filmTitle" class="block font-bold text-xs uppercase tracking-wider text-slate-700 mb-1">
+                                Título del Cortometraje *
+                            </label>
+                            <input type="text" id="filmTitle" name="filmTitle" required placeholder="Ej: El Misterio del Biobío" 
+                                class="w-full px-4 py-3 rounded-xl border-2 border-black focus:outline-none focus:ring-2 focus:ring-fainBlue font-medium text-sm">
+                        </div>
+
+                        <!-- Duración -->
+                        <div>
+                            <label for="filmDuration" class="block font-bold text-xs uppercase tracking-wider text-slate-700 mb-1">
+                                Duración Aproximada *
+                            </label>
+                            <input type="text" id="filmDuration" name="filmDuration" required placeholder="Ej: 2 min 30 seg" 
+                                class="w-full px-4 py-3 rounded-xl border-2 border-black focus:outline-none focus:ring-2 focus:ring-fainBlue font-medium text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <!-- Técnica Utilizada -->
+                        <div>
+                            <label for="filmTechnique" class="block font-bold text-xs uppercase tracking-wider text-slate-700 mb-1">
+                                Técnica Principal de Animación *
+                            </label>
+                            <select id="filmTechnique" name="filmTechnique" required class="w-full px-4 py-3 rounded-xl border-2 border-black focus:outline-none focus:ring-2 focus:ring-fainBlue font-medium text-sm bg-white">
+                                <option value="" disabled selected>Selecciona una técnica</option>
+                                <option value="2D Digital / Tradicional">Animación 2D (Digital / Tradicional)</option>
+                                <option value="Animación 3D">Animación 3D</option>
+                                <option value="Stop Motion">Stop Motion</option>
+                                <option value="Cut-out Digital">Cut-out Digital</option>
+                                <option value="Motion Graphics">Motion Graphics</option>
+                                <option value="Técnica Mixta">Técnica Mixta / Experimental</option>
+                            </select>
+                        </div>
+
+                        <!-- Temática / Identidad local check -->
+                        <div>
+                            <label for="hasLocalIdentity" class="block font-bold text-xs uppercase tracking-wider text-slate-700 mb-1">
+                                ¿Aborda temática de Identidad Local?
+                            </label>
+                            <select id="hasLocalIdentity" name="hasLocalIdentity" class="w-full px-4 py-3 rounded-xl border-2 border-black focus:outline-none focus:ring-2 focus:ring-fainBlue font-medium text-sm bg-white">
+                                <option value="Sí, aborda identidad o cultura de la Región del Biobío">Sí (Recibe puntuación especial del jurado)</option>
+                                <option value="No, es temática libre general">No, temática libre general</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Reseña / Sinopsis -->
+                    <div>
+                        <label for="filmSynopsis" class="block font-bold text-xs uppercase tracking-wider text-slate-700 mb-1">
+                            Sinopsis / Reseña del Cortometraje (Máx 5 líneas) *
+                        </label>
+                        <textarea id="filmSynopsis" name="filmSynopsis" rows="3" required placeholder="Escribe un breve resumen de la historia o concepto visual de tu obra..." 
+                            class="w-full px-4 py-3 rounded-xl border-2 border-black focus:outline-none focus:ring-2 focus:ring-fainBlue font-medium text-sm"></textarea>
+                    </div>
+
+                    <!-- Section Header 3 -->
+                    <div class="border-b-2 border-slate-200 pb-2 pt-4">
+                        <h3 class="font-titan text-xl text-fainDarkBlue flex items-center gap-2">
+                            <i class="fa-solid fa-cloud-arrow-up"></i> 3. Enlace de Archivos en la Nube
+                        </h3>
+                    </div>
+
+                    <!-- Enlace Nube -->
+                    <div>
+                        <label for="cloudLink" class="block font-bold text-xs uppercase tracking-wider text-slate-700 mb-1">
+                            Enlace de Carpeta en la Nube (Google Drive / OneDrive / Dropbox / Vimeo) *
+                        </label>
+                        <input type="url" id="cloudLink" name="cloudLink" required placeholder="https://drive.google.com/drive/folders/ejemplo..." 
+                            class="w-full px-4 py-3 rounded-xl border-2 border-black focus:outline-none focus:ring-2 focus:ring-fainBlue font-medium text-sm">
+                        <p class="text-xs text-slate-500 font-medium mt-1">
+                            ⚠️ Recuerda incluir en esta carpeta: 1) Video MP4/MOV 1080p, 2) Ficha técnica PDF y 3) Carpeta de Proceso (Making Of) con bocetos/capturas. Asegúrate de dar acceso de lectura público.
+                        </p>
+                    </div>
+
+                    <!-- Checkboxes terms -->
+                    <div class="space-y-3 pt-2">
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" id="checkAiRule" name="checkAiRule" required class="mt-1 w-4 h-4 rounded border-2 border-black text-fainBlue focus:ring-fainBlue">
+                            <span class="text-xs font-semibold text-slate-700">
+                                Declaro que este cortometraje NO ha sido generado en su totalidad con herramientas de Inteligencia Artificial generativa y adjunto mi carpeta de proceso (*Making Of*).
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" id="checkRights" name="checkRights" required class="mt-1 w-4 h-4 rounded border-2 border-black text-fainBlue focus:ring-fainBlue">
+                            <span class="text-xs font-semibold text-slate-700">
+                                Acepto las bases de FAIN 2026 y declaro contar con los derechos autorales de la obra, imágenes y banda sonora o contar con licencias autorizadas.
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-4">
+                        <button type="submit" class="pop-btn w-full bg-fainYellow text-black py-4 text-xl font-black uppercase tracking-wider hover:bg-fainLime flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-paper-plane text-2xl"></i>
+                            ENVIAR POSTULACIÓN Y GENERAR COMPROBANTE
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER INSTITUCIONAL -->
+    <footer class="bg-black text-white py-12 px-4 border-t-4 border-black">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-8 items-center">
+            
+            <div class="md:col-span-6 text-center md:text-left">
+                <img src="logo-fain.svg" alt="Logo FAIN" class="inline-block h-14 w-auto rounded-xl border-2 border-black bg-white p-1 mb-3 shadow-pop object-contain">
+                <h4 class="font-bold text-lg text-fainYellow">Festival de Animación Digital INACAP</h4>
+                <p class="text-sm text-slate-400 mt-1">
+                    Organiza: <strong>Área de Diseño e Industria Digital</strong><br>
+                    INACAP Sede Concepción-Talcahuano.
+                </p>
+            </div>
+
+            <div class="md:col-span-6 text-center md:text-right text-sm text-slate-300">
+                <p class="font-bold text-white mb-2">Contacto Oficial de Coordinación:</p>
+                <a href="mailto:fainccp@inacap.cl" class="pop-btn inline-block bg-fainBlue text-white px-4 py-2 text-sm font-bold hover:bg-fainDarkBlue">
+                    <i class="fa-solid fa-envelope mr-1 text-fainYellow"></i> fainccp@inacap.cl
+                </a>
+                <p class="text-xs text-slate-500 mt-4">
+                    © 2026 FAIN - Todos los derechos reservados. Concepción - Talcahuano, Región del Biobío, Chile.
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- SUCCESS RECEIPT MODAL DIALOG -->
+    <div id="receiptModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="pop-card bg-white text-slate-900 w-full max-w-2xl border-4 border-black p-6 md:p-8 max-h-[90vh] overflow-y-auto relative animate-float-slow">
+            
+            <button id="closeModalBtn" class="absolute top-4 right-4 w-10 h-10 bg-fainCoral text-white font-black text-xl rounded-full border-2 border-black flex items-center justify-center hover:bg-red-600">
+                ×
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-fainLime text-black font-black text-3xl rounded-full border-3 border-black flex items-center justify-center mx-auto mb-3 shadow-pop">
+                    ✓
+                </div>
+                <h3 class="font-titan text-3xl text-black">¡POSTULACIÓN REGISTRADA!</h3>
+                <p class="text-sm font-semibold text-slate-600">
+                    Tu comprobante oficial ha sido generado con éxito.
+                </p>
+            </div>
+
+            <!-- Receipt Box -->
+            <div id="receiptContent" class="bg-slate-100 p-4 rounded-xl border-2 border-black font-mono text-xs space-y-2 mb-6">
+                <!-- Dynamically filled by JS -->
+            </div>
+
+            <p class="text-xs text-slate-600 font-medium text-center mb-6">
+                Tu comprobante ha sido generado correctamente. Puedes copiarlo o abrir tu cliente de correo para enviarlo a <strong>fainccp@inacap.cl</strong>.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button id="copyReceiptBtn" class="pop-btn bg-white text-black px-4 py-3 text-sm font-extrabold flex-1 hover:bg-slate-100 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-copy"></i> Copiar Comprobante
+                </button>
+                <a id="mailtoDirectBtn" href="#" target="_blank" class="pop-btn bg-fainYellow text-black px-4 py-3 text-sm font-extrabold flex-1 hover:bg-fainLime flex items-center justify-center gap-2 text-center">
+                    <i class="fa-solid fa-paper-plane"></i> Enviar al correo
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Mobile Menu Toggle logic
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when clicking nav links
+            document.querySelectorAll('#mobileMenu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Postulation Form Logic
+            const form = document.getElementById('fainPostulationForm');
+            const modal = document.getElementById('receiptModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const receiptContent = document.getElementById('receiptContent');
+            const copyReceiptBtn = document.getElementById('copyReceiptBtn');
+
+            form.addEventListener('submit', (e) => {
+                const formData = new FormData(form);
+
+                const payload = {
+                    directorName: formData.get('directorName')?.toString().trim() || '',
+                    directorEmail: formData.get('directorEmail')?.toString().trim() || '',
+                    directorPhone: formData.get('directorPhone')?.toString().trim() || '',
+                    institution: formData.get('institution')?.toString() || '',
+                    filmTitle: formData.get('filmTitle')?.toString().trim() || '',
+                    filmDuration: formData.get('filmDuration')?.toString().trim() || '',
+                    filmTechnique: formData.get('filmTechnique')?.toString() || '',
+                    hasLocalIdentity: formData.get('hasLocalIdentity')?.toString() || 'No, es temática libre general',
+                    filmSynopsis: formData.get('filmSynopsis')?.toString().trim() || '',
+                    cloudLink: formData.get('cloudLink')?.toString().trim() || '',
+                    checkAiRule: !!formData.get('checkAiRule'),
+                    checkRights: !!formData.get('checkRights')
+                };
+
+                const errors = [];
+
+                if (!payload.directorName) errors.push('Nombre completo del director / responsable.');
+                if (!payload.directorEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.directorEmail)) {
+                    errors.push('Correo electrónico válido.');
+                }
+                if (!payload.directorPhone) errors.push('Teléfono / WhatsApp.');
+                if (!payload.institution) errors.push('Institución de educación superior.');
+                if (!payload.filmTitle) errors.push('Título del cortometraje.');
+                if (!payload.filmDuration) errors.push('Duración aproximada.');
+                if (!payload.filmTechnique) errors.push('Técnica principal de animación.');
+                if (!payload.filmSynopsis) errors.push('Sinopsis del cortometraje.');
+                if (!payload.cloudLink || !/^https?:\/\//i.test(payload.cloudLink)) {
+                    errors.push('Enlace válido de la carpeta en la nube.');
+                }
+                if (!payload.checkAiRule) errors.push('Debes aceptar la declaración sobre IA generativa.');
+                if (!payload.checkRights) errors.push('Debes aceptar las bases y derechos autorales.');
+
+                if (errors.length) {
+                    e.preventDefault();
+                    receiptContent.innerHTML = `
+                        <div class="text-fainCoral font-bold text-sm border-b pb-1">VALIDACIÓN REQUERIDA</div>
+                        <div class="text-slate-700">Completa los siguientes campos antes de enviar:</div>
+                        <ul class="list-disc pl-5 mt-2 text-slate-700">
+                            ${errors.map(error => `<li>${error}</li>`).join('')}
+                        </ul>
+                    `;
+                    modal.classList.remove('hidden');
+                    return;
+                }
+            });
+
+            // Close Modal
+            closeModalBtn.addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+
+            // Close Modal on backdrop click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
